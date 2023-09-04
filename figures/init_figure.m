@@ -1,0 +1,49 @@
+function init_figure(popts)
+% INIT_FIGURE  Initialize figure.
+
+  error(nargchk(0, 1, nargin))     
+  if nargin == 0
+    popts = [];
+  end
+
+  set(groot, 'defaultAxesTickDir', 'out');
+  set(groot, 'defaultAxesTickDirMode','manual')
+  
+  fheight   = PARS('figure_height', popts);
+  fwidth    = PARS('figure_width', popts);
+  
+  % set properties of plots
+  clf
+  set(gcf, 'Units', 'inches', 'PaperUnits', 'inches')
+  psize     = get(gcf, 'PaperSize');
+  fpos      = get(gcf, 'Position');
+
+  ppos      = [(psize(1) - fwidth)/2, (psize(2) - fheight)/2, fwidth, fheight];
+  fpos      = [fpos(1) fpos(2) fpos(3) fpos(3)*fheight/fwidth];
+  set(gcf, 'PaperPosition', ppos, ...
+	   'Position', fpos, ...
+	   'DefaultLineLineWidth', PARS('line_width', popts), ...
+	   'DefaultLineMarkerSize', PARS('marker_size'), ...
+	   'DefaultAxesLineWidth', PARS('axes_line_width', popts), ...
+	   'DefaultAxesFontSize',  PARS('font_size', popts), ...
+	   'DefaultTextInterpreter', 'tex', ...
+	   'DefaultTextFontSize',  PARS('font_size', popts), ...
+	   'DefaultTextFontName', 'Helvetica', ...
+	   'DefaultAxesFontName', 'Helvetica', ...
+	   'DefaultAxesLayer', 'top', ...
+	   'DefaultAxesTickDir', 'out', ...
+	   'DefaultAxesTickLength', PARS('tick_length', popts), ...
+	   'DefaultAxesXMinorTick', 'off', ...
+	   'DefaultAxesYMinorTick', 'off', ...
+      	   'DefaultAxesPosition', [.2  .2 .75 .75] );
+%	   'DefaultAxesPosition', [.135 .17 .85 .815] )
+  %    	   'DefaultAxesPosition', [.2  .2 .75 .75] );
+%  	   'DefaultAxesPosition', [.2  .2 .78 .78] );
+ 	   
+
+
+
+ 
+% 1 column square in Science  
+%  'DefaultAxesPosition', [.2  .2 .78 .78]
+
